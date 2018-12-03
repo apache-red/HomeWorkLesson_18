@@ -1,6 +1,6 @@
 # # HomeWorkLesson_18
 Задание:
-Lesson 18 - все задачачи передлать для БД
+Lesson 18 - все задачи переделать для БД
  
  
 //test picture
