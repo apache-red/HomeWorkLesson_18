@@ -9,23 +9,32 @@ import java.util.List;
 
 public class BookDaoSQLImpl implements DBCommand {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/red_db";
-    private static final String DB_USER = "root";
-    private static final String DB_PASS = "1234";
+    // CHANGE PARAMS!
+    private static final String DB_URL =
+            "jdbc:mysql://localhost:3306/red_db" +
+                    "?verifyServerCertificate=false" +
+                    "&useSSL=false" +
+                    "&requireSSL=false" +
+                    "&useLegacyDatetimeCode=false" +
+                    "&amp" +
+                    "&serverTimezone=UTC";
+    ;
+    private static final String DB_USER = "red";
+    private static final String DB_PASS = "root";
 
     @Override
     public List<Book> getBookList() {
 
         List<Book> bookList = new ArrayList<Book>();
-        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER,DB_PASS)){
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM book");
-            while (rs.next()== true){
+            while (rs.next() == true) {
                 int id = rs.getInt("id");
                 String title = rs.getString("title");
                 Book book = new Book(id, title);
                 bookList.add(book);
-                System.out.println("id: "+id +", "+ "title"+ title);
+                System.out.println("id: " + id + ", " + "title" + title);
             }
 
         } catch (SQLException e) {
@@ -36,10 +45,9 @@ public class BookDaoSQLImpl implements DBCommand {
     }
 
     @Test
-    public void testConnect(){
+    public void testConnect() {
         getBookList();
     }
-
 
 
 }
