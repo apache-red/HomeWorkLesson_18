@@ -7,7 +7,7 @@ import com.redcompany.red.library.service.impl.RegularDBServiceImpl;
 
 import java.util.Map;
 
-public class DBGetBookscommand implements BasicCommand {
+public class DBViewAllBooksInCatalogs implements BasicCommand {
 
     private DBService dbService;
     private DataBase dataBase;
@@ -17,6 +17,7 @@ public class DBGetBookscommand implements BasicCommand {
     public void performAction(Map<String, Object> userdata, DataBase dataBase) {
 
         dbService = new RegularDBServiceImpl();
-        System.out.println(dbService.getBookList(dataBase.gedDataBase()));
+
+      //  System.out.println(dbService.getBookList(dataBase.gedDataBase()));
     }
 }

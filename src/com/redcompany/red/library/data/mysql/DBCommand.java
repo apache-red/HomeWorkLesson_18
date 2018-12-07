@@ -1,13 +1,14 @@
 package com.redcompany.red.library.data.mysql;
 
-import com.redcompany.red.library.entity.Book;
+
+import com.redcompany.red.library.entity.Library;
 
 
-import java.util.List;
+
 
 public interface DBCommand {
 
-    List<Book> getBookList();
+    Library getBookList();
 
     void initBD();
 }

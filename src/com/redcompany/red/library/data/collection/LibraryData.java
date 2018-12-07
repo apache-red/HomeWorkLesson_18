@@ -1,6 +1,5 @@
 package com.redcompany.red.library.data.collection;
 
-
 import com.redcompany.red.library.entity.Book;
 import com.redcompany.red.library.entity.Catalog;
 import com.redcompany.red.library.entity.Library;
@@ -15,9 +14,8 @@ public class LibraryData implements LibraryCommand {
     private Library library;
     private Catalog catalog;
 
-
     private List<Catalog> catalogList;
-    private List<Book> bookList;
+
 
     private int idBook;
 

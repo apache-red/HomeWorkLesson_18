@@ -29,7 +29,7 @@ public class CommandManager {
                 command = new FindBookByAuthor();
                 break;
             case "test_db":
-                command = new DBGetBookscommand();
+                command = new DBViewAllBooksInCatalogs();
                 break;
 
         }
