@@ -8,4 +8,6 @@ import java.util.List;
 public interface DBCommand {
 
     List<Book> getBookList();
+
+    void initBD();
 }

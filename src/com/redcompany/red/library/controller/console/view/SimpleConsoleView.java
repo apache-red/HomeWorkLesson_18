@@ -84,7 +84,7 @@ public class SimpleConsoleView {
 
     }
 
-    private int readMenuItem() {
+    public int readMenuItem() {
         System.out.print("Input field: ");
         Scanner scanner = new Scanner(System.in);
         int number = 0;

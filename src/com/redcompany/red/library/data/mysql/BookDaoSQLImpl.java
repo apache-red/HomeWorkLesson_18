@@ -22,6 +22,11 @@ public class BookDaoSQLImpl implements DBCommand {
     private static final String DB_USER = "red";
     private static final String DB_PASS = "root";
 
+
+    public BookDaoSQLImpl() {
+
+    }
+
     @Override
     public List<Book> getBookList() {
 
@@ -41,11 +46,23 @@ public class BookDaoSQLImpl implements DBCommand {
             e.printStackTrace();
         }
 
-        return bookList;
+        return null;
     }
 
+    @Override
+    public void initBD() {
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
+            Statement st = connection.createStatement();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
     @Test
-    public void testConnect() {
+    public void testInitBD() {
         getBookList();
     }
 

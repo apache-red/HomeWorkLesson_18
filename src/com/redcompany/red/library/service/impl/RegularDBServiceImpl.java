@@ -11,11 +11,13 @@ public class RegularDBServiceImpl implements DBService {
    private DBCommand dbCommand;
    private List<Book> bookList;
 
+
     @Override
-    public List<Book> getBookList() {
+    public List<Book> getBookList( BookDaoSQLImpl bookDaoSQL) {
+        System.out.println(bookDaoSQL);
         System.out.println();
 
-        BookDaoSQLImpl bookDaoSQL = new BookDaoSQLImpl();
+
         bookList = bookDaoSQL.getBookList();
         System.out.println();
         return bookList;

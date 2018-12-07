@@ -1,10 +1,9 @@
 package com.redcompany.red.library.controller.console;
 
-
 import com.redcompany.red.library.controller.command.BasicCommand;
 import com.redcompany.red.library.controller.console.view.SimpleConsoleView;
-import com.redcompany.red.library.data.collection.LibraryCommand;
-import com.redcompany.red.library.data.collection.LibraryData;
+import com.redcompany.red.library.data.DataBase;
+
 
 import java.util.Map;
 
@@ -16,7 +15,7 @@ public class MainConsoleController {
     public static void main(String[] args) {
 
         // создаю БД библиотек
-        LibraryCommand libraryData = new LibraryData();
+        DataBase dataBase = new DataBase();
 
        while (true) {
            //создаем консоль
@@ -36,7 +35,8 @@ public class MainConsoleController {
            BasicCommand command = defineCommand(convertString(userAction));
 
            // полиморфически вызывается метод на указанной библиотеке + передаем доп параметры
-           command.performAction(userdata, libraryData);
+           command.performAction(userdata, dataBase);
+
            System.out.println();
        }
 
