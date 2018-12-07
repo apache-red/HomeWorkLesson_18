@@ -57,11 +57,14 @@ public class BookDaoSQLImpl implements DBCommand {
     @Override
     public void initBD() {
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM library_db");
+            Statement stmt = connection.createStatement();
+         //   ResultSet rs = st.executeQuery("SELECT * FROM library_db");
             if (testDB() == false) {
-                if (fillDBDefaultValues() == true) {
+                if (fillDBDefaultValues(stmt) == true) {
                     System.out.println("Database was successfully initialized");
+                }else {
+                    System.out.println("Exception! Database (MYSQL) was not initialized!");
+                    System.out.println("Working with it may lead to an error!");
                 }
             }
         } catch (SQLException e) {
@@ -69,8 +72,28 @@ public class BookDaoSQLImpl implements DBCommand {
         }
     }
 
-    // standart values
-    private boolean fillDBDefaultValues() {
+    // fill standart values
+    private boolean fillDBDefaultValues(Statement stmt ) {
+
+        String sql;
+        try {
+            sql="CREATE DATABASE library_db; ";
+            stmt.execute(sql);
+            sql="USE library_db;";
+            stmt.execute(sql);
+         //   sql="CREATE TABLE my_library (id INTEGER AUTO_INCREMENT, authorcatalog VARCHAR(40), PRIMARY KEY (id));";
+            stmt.execute("CREATE TABLE mylibrary(id INT PRIMARY KEY AUTO_INCREMENT,catalog_authors varchar(40) NOT NULL);");
+            System.out.println();
+
+//            stmt.execute(sql);
+//            sql="INSERT INTO namesRanking (name, rating) VALUES ('Nikolaj',12344);";
+//            stmt.execute(sql);
+//            sql="INSERT INTO namesRanking (name, rating) VALUES ('Dmitrij', 12234);";
+//            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.err.println("Error FILL DB !!!!");
+            e.printStackTrace();
+        }
 
         return false;
     }
